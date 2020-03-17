@@ -1,0 +1,83 @@
+{% extends "events/base2.html" %}
+{% block table %}
+
+
+
+<br><br>
+
+<div class="main"><div class="container" id="cl">
+
+  <!-- Portfolio Item Heading -->
+  <h1 id="a" class="my-4" >{{event.title}}
+    <small>{{event.department}}</small>
+  </h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{event.event_image.url}}" alt="">
+    </div>
+
+    <div class="col-md-4">
+      <h3 id="h3" class="my-3">Event Description</h3>
+      <p>{{event.description}}</p>
+      <h3 class="my-3" id="h4">Event Organizer Contact</h3>
+      <ul>
+        <li>{{event.event_organizer_name}}</li>
+        <li>{{event.event_organizer_contact}}</li>
+      </ul>
+       <h3 class="my-3" id="h5">Student Coordinator</h3>
+      <ul>
+        <li>{{event.student_coordinator_name}}</li>
+        <li>{{event.student_coordinator_mobile}}</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.row -->
+    <br><br>
+
+  <!-- Related Projects Row -->
+<div>
+                        <table class="table" id="tb">
+                            <tbody>
+                                <tr>
+                                    <td class="success">Venue: </td>
+                                    <td>{{event.venue}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">Category: </td>
+                                    <td>{{event.event_category}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">Start Date: </td>
+                                    <td>{{event.event_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">End Date: </td>
+                                    <td>{{event.end_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">Technical Events: </td>
+                                    <td>{{event.techinical_event}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">Non Technical Events: </td>
+                                    <td>{{event.non_techinical_event}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">Registration Fee: </td>
+                                    <td>₹{{event.reg_fee_in_rupees}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="success">E-mail: </td>
+                                    <td>{{event.event_booking_email}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+    <br><br>
+{% endblock table %}
+
+</div>

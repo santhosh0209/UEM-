@@ -1,0 +1,30 @@
+{% extends "events/base.html" %}
+{% block content %}
+<table id="dtHorizontalscroll" class="table table-hover">
+    <thead>
+      <tr style="font-size: 24px;">
+        <th scope="col">Event Name</th>
+        <th scope="col">Date/Time</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr>
+
+        <th scope="row"><a href='{% url "details" id=event.id %}'>{{ event.title }}</a></th>
+        <td>{{ event.event_date }}</td>
+        <td>{{ event.venue }}</td>
+        {% if event.event_status == 1 %}
+        <td>Open</td>
+        {% else %}
+        <td>Closed</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+{% endblock content %}
