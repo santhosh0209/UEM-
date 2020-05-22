@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Events Manager</title>
+    <link rel="stylesheet" href="{% static 'events/bootstrap.min.css' %}">
+    
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Mono|Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption|Roboto|Ropa+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Do+Hyeon|Permanent+Marker|Spicy+Rice|Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+
+    <link rel="stylesheet" href="{% static 'events/style.css' %}">
+</head>
+
+<body>
+
+
+    <nav>
+        <label class="logo"> Events <span id="span" style="color: #0082e6;">Manager</span></label>
+        <ul  id="active">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="{% url 'event-about' %}">about</a></li>
+            <li><a href="#featuress">Features</a></li>
+            <li><a href="#servicess">services</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'admin:index' %}">admin</a></li>
+            <li><a href="{% url 'logout' %}">logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">login</a></li>
+            <li><a href="{% url 'register' %}">register</a></li>
+
+             {% endif %}
+           
+          </ul>
+          <div class="checkbtn"><i class="fa fa-bars" aria-hidden="true"></i></div>
+  </nav>
+     <section id="home" class="site-title">
+        <div class="content">
+            <h2 id="line"><span id="typed"></span></h2>
+            <button class="btn">Explore</button>
+        </div>
+    </section>
+
+
+  
+
+    <br><br><br><br><br>
+ <!-- small area -->
+
+
+ <section id="featuress" class="site-second-tab">
+    <h1 id="head">Features</h1>
+    <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+        
+
+            <h3>University Events Manager</h3>
+           
+                <div class="content">
+                    <h1 id="line"><span id="typed2"></span></h1>
+                </div>
+         
+
+    
+    </div>
+</section>
+
+
+<!-- services area -->
+
+<div id="servicess" class="services">
+    <h1>What We do?</h1>
+    <div class="container">
+        <div class="row">
+            <div id="cards" class="col-md-4">
+                <div class="main">
+                    <div class="service">
+                        <div class="service-logo">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>                   </div>
+                        <h4>Handling Events</h4>
+                        <p>"We handle all kinds of Events such as Techinical, Non Techinical, Seminars, Webinar, symposium, Workshops etc.."<span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaaaaaaa aaaaaaa aaaaaa aaaaaaaaa aaaaaa aaaaaaaaa aaaaaaaa aaaaaa </span></p>
+                    </div>
+                    <div class="shadowone"></div>
+                    <div class="shadowtwo"></div>
+                </div>
+            </div>
+            <div id="cards" class="col-md-4">
+                <div class="main">
+                    <div class="service">
+                        <div class="service-logo">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>                        </div>
+                        <h4>Quick Registration</h4>
+                        <p>"Here We allow you to quick registration for the events that is available. This Saves lots of time and your energy." <span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaaaaaaa aaaaaaa aaaaaa aaaaaaaaa aaaaaa aaaaaaaaa aaaaaaaa aaaaaa </span></p>
+                    </div>
+                    <div class="shadowone"></div>
+                    <div class="shadowtwo"></div>
+                </div>
+            </div>
+            <div id="cards" class="col-md-4">
+                <div class="main">
+                    <div class="service">
+                        <div class="service-logo">
+                            <i style="font-size: 4rem; margin-right: 1rem;" class="fa fa-rocket" aria-hidden="true"></i>         </div>
+                        <h4>Universal Access</h4>
+                        <p>"We provide Universal Access to this website. One can use this website anywhere from this world and also register for any events from home itself."<span style="visibility: hidden;">aaa aaaaaaaaaaa aaa aaaaaaaaaaa aaaaaaa aaaaaa aaaaaaaaa  aaaaaaaa aaaaa aaaa aaaa aaa a aaaaaa </span></p>
+                    </div>
+                    <div class="shadowone"></div>
+                    <div class="shadowtwo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  <!-- events -->
+
+    <br><br><br><br><br>
+ <div class="site-main-area">
+     
+    <div class="container events-area">
+
+        <div class="row">
+        
+
+            <div class="col-lg-12">
+                <h1 id="head2">Events</h1>
+
+                <ul class="filters text-center">
+                    <li class="active" data-filter="*"><a href="#!">All</a></li>
+                    <li data-filter=".1"><a href="#!">Opened</a></li>
+                    <li data-filter=".0"><a href="#!">Closed</a></li>
+                    <li data-filter=".1"><a href="#!">Upcomming</a></li>
+                </ul>
+
+                <div class="projects">
+
+                    <div class="row">
+
+                        {% block content%}
+                        {% endblock %}
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="parag  bg-light">
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+
+    <p style="visibility: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rerum quasi tempore id esse, repellendus aliquid molestiae sapiente consectetur placeat neque unde optio iusto quibusdam consequuntur! Reprehenderit placeat sint quasi.</p>
+</div>    
+
+<div class="footer">
+    <h1>&copy; All Rights Reserved||Developed by <a href="https://dreamcreators.cf/">Dream Creators</a></h1>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
+    <script src="{% static 'events/typed.min.js' %}"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="{% static 'events/main.js' %}"></script>
+
+   
+</body>
+
+</html>

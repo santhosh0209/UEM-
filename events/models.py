@@ -9,6 +9,18 @@ EVENT_STATUSES = (
     (1, 'Open'),
 )
 
+Departments = (
+    (0, 'Department of IT'),
+    (1, 'Department of CSE'),
+    (2, 'Department of Mechanical'),
+    (3, 'Department of ECE'),
+    (4, 'Department of EEE'),
+    (5, 'Department of Civil'),
+    
+)
+
+
+
 PARTICIPATION_STATUSES = (
     (0, 'No, thanks'),
     (1, 'I may attend'),
@@ -19,7 +31,12 @@ PARTICIPATION_STATUSES = (
 class Event(models.Model):
     title = models.CharField(max_length=200, default=None)
     venue = models.CharField(max_length=200, default=None)
-    department = models.CharField(max_length=100,default=None)
+      
+    Department = models.PositiveIntegerField(
+        choices=Departments,
+        default='0',
+    )
+    # department = models.CharField(max_length=100,default=None)
     event_category = models.CharField(max_length=200,default=None)
     description = models.TextField(default=None)
     # date = models.DateTimeField()
@@ -31,9 +48,10 @@ class Event(models.Model):
         choices=EVENT_STATUSES,
         default='1',
     )
+  
     techinical_event = models.TextField(default=None)
     non_techinical_event = models.TextField(default=None)
-    reg_fee_in_rupees = models.PositiveIntegerField(default=0)
+    reg_fee_in_rupees = models.CharField(max_length=50, default=None)
 
     event_organizer_name = models.CharField(max_length=50, default=None)
     event_organizer_contact = models.CharField(max_length=10, default=None)
@@ -41,7 +59,7 @@ class Event(models.Model):
     student_coordinator_mobile = models.CharField(max_length=10,default=None)
 
     event_booking_email = models.EmailField()
-    event_image = models.ImageField(upload_to='image', blank=True,help_text="only upload an 750*500 photo")
+    event_image = models.ImageField(upload_to='image', blank=True)
 
 
 
@@ -73,16 +91,3 @@ class Participation(models.Model):
         default='0',
     )
     date_registered = models.DateTimeField(auto_now_add=True)
-
-    # def __str__(self):
-    #    return '{} - {} ({})'.format(self.person, self.event, self.get_status_display())
-
-
-# in events
- # participants = models.ManyToManyField(
-    #     User,
-    #     related_name='in_events'
-    # )
-# organizers = models.ManyToManyField(
-    #     User,
-    #     related_name='organized_events')

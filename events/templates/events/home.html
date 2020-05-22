@@ -1,30 +1,33 @@
-{% extends "events/base.html" %}
-{% block content %}
-<table id="dtHorizontalscroll" class="table table-hover">
-    <thead>
-      <tr style="font-size: 24px;">
-        <th scope="col">Event Name</th>
-        <th scope="col">Date/Time</th>
-        <th scope="col">Venue</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for event in events %}
-      <tr>
+{% extends "events/index.html" %}
+{% load static %}
 
-        <th scope="row"><a href='{% url "details" id=event.id %}'>{{ event.title }}</a></th>
-        <td>{{ event.event_date }}</td>
-        <td>{{ event.venue }}</td>
-        {% if event.event_status == 1 %}
-        <td>Open</td>
-        {% else %}
-        <td>Closed</td>
-        {% endif %}
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+{% block content %}
+
+      {% for event in events %}
+      <div class="col-lg-4 item {{event.event_status}}">
+                            
+        <div class="card">
+
+            <div class="card-head ">
+                <img id="{{event.Department}}" src=""  alt="" class="img-fluid  card-img">
+                <div class="card-overlay"><h2>{{event.title}}</h2></div>
+                <div class="card-hover">
+                    <h2>{{event.title}}</h2>
+                    <p>{{event.event_date}}</p>
+                </div>
+            </div>
+
+            <div class="card-body text-center">
+                <h4 id="h4" class="title">{{event.get_Department_display}}</h4>
+                <a href="{% url "details" id=event.id %}" class="btn btn-lg card-btn">See More</a>
+            </div>
+
+        </div>
+
+    </div>
+ 
+  {% endfor %}
+  
 
 
 {% endblock content %}

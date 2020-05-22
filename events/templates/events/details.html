@@ -1,83 +1,158 @@
-{% extends "events/base2.html" %}
-{% block table %}
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
 
-
-<br><br>
-
-<div class="main"><div class="container" id="cl">
-
-  <!-- Portfolio Item Heading -->
-  <h1 id="a" class="my-4" >{{event.title}}
-    <small>{{event.department}}</small>
-  </h1>
-
-  <!-- Portfolio Item Row -->
-  <div class="row">
-
-    <div class="col-md-8">
-      <img class="img-fluid" src="{{event.event_image.url}}" alt="">
-    </div>
-
-    <div class="col-md-4">
-      <h3 id="h3" class="my-3">Event Description</h3>
-      <p>{{event.description}}</p>
-      <h3 class="my-3" id="h4">Event Organizer Contact</h3>
-      <ul>
-        <li>{{event.event_organizer_name}}</li>
-        <li>{{event.event_organizer_contact}}</li>
-      </ul>
-       <h3 class="my-3" id="h5">Student Coordinator</h3>
-      <ul>
-        <li>{{event.student_coordinator_name}}</li>
-        <li>{{event.student_coordinator_mobile}}</li>
-      </ul>
-    </div>
-
-  </div>
-  <!-- /.row -->
-    <br><br>
-
-  <!-- Related Projects Row -->
-<div>
-                        <table class="table" id="tb">
-                            <tbody>
-                                <tr>
-                                    <td class="success">Venue: </td>
-                                    <td>{{event.venue}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Category: </td>
-                                    <td>{{event.event_category}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Start Date: </td>
-                                    <td>{{event.event_date}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">End Date: </td>
-                                    <td>{{event.end_date}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Technical Events: </td>
-                                    <td>{{event.techinical_event}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Non Technical Events: </td>
-                                    <td>{{event.non_techinical_event}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Registration Fee: </td>
-                                    <td>₹{{event.reg_fee_in_rupees}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">E-mail: </td>
-                                    <td>{{event.event_booking_email}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'events/details_style.css' %}">
+</head>
+<body>
+    
+    <!-- header area -->
+    <header id="header">
+        <div class="row m-0">
+            <div class="col-3 bgcolor-black">
+                <nav class="primary-nav navbar-expand-md">
+                    <div class="site-title text-center text-light py-5">
+                        <a href="#" class="navbar-brand font-staat font-size-40">UEM</a>
+                        <p class="description text-uppercase font-os">university events manager</p>
                     </div>
-    <br><br>
-{% endblock table %}
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'event-home' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Home</a>
+                        <a href="{% url 'event-about' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">About</a>
+                        <a href="#reg" class="nav-item nav-link text-white-50 font-os font-size-16 active">Event Registration</a>
+                        <a href="#footer" class="nav-item nav-link text-white-50 font-os font-size-16 active">Contact Us</a>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'admin:index' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Admin</a>
+                        <a href="{% url 'logout' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Logout</a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Login</a>
+                        <a href="{% url 'register' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Register</a>
+                        {% endif %}
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <button class="toggle-button"><span class="fas fa-bars fa-2x"></span></button>
+        <div class="social">
+            <span class="mr-3"><i class="fab fa-facebook-f"></i></span>
+            <span class="mr-3"><i class="fab fa-twitter"></i></span>
+            <span class="mr-3"><i class="fab fa-instagram"></i></span>
+            <span class="mr-3"><i class="fab fa-youtube"></i></span>
+        </div>
+    </header>
+    <!-- #header area -->
+    
+    <main id="site-main">
+        <div class="row m-0">
+            <div class="col-md-9 offset-md-3 px-0">
 
-</div>
+                <section class="about px-4 my-5" id="about_me">
+                    <div class="me py-5">
+                        <h5 class="text-uppercase font-os font-size-16 text-muted">{{event.title}}</h5>
+                        <h1 class="text-uppercase font-staat font-size-34">{{event.get_Department_display}}</h1>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-5 pl-0">
+                            <img src="{{event.event_image.url}}" alt="Not Found" class="img-fluid">
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="text-uppercase font-os font-size-16 text-muted">Event description</h6>
+                            <h5 class="font-ram font-size-20 py-2">{{event.title}}</h5>
+                            <p class="font-ram text-black-50 py-2">
+                                {{event.description}}
+                            </p>
+                        
+                        </div>
+                    </div>
+                </section>
+              <div class="container ab pl-5 bg-light pt-5">
+                <h1 class="text-uppercase font-ram pb-0 font-size-34">Event Details</h1>
+
+                <div id="details" class=" pl5 py-5 row main_details ">
+                    <div class="d-flex col-md-6 flex-column details">
+                        <p class="font-ram"><b>Event Organizer: </b><span class="text-black-50">{{event.event_organizer_name}}, {{event.event_organizer_contact}}</span></p>
+                        <p class="font-ram"><b>Venue: </b><span class="text-black-50">{{event.venue}}</span></p>
+                        <p class="font-ram"><b>Start Date: </b><span class="text-black-50">{{event.event_date}}</span></p>
+                        <p class="font-ram"><b>Techinical Events: </b><span class="text-black-50">{{event.techinical_event}}</span></p>
+                        <p class="font-ram"><b>Registration Fee: </b><span class="text-black-50">{{event.reg_fee_in_rupees}}</span></p>
+
+
+                    </div>
+                    <div class="d-flex col-md-6 flex-column details">
+                        <p class="font-ram"><b>Student Coordinator: </b><span class="text-black-50">{{event.student_coordinator_name}}, {{event.student_coordinator_mobile}}</span></p>
+                        <p class="font-ram"><b>Catagory: </b><span class="text-black-50">{{event.event_category}}</span></p>
+                        <p class="font-ram"><b>End Date: </b><span class="text-black-50">{{event.end_date}}</span></p>
+                        <p class="font-ram"><b>Non Techinical Events: </b><span class="text-black-50">{{event.non_techinical_event}}</span></p>
+                        <p class="font-ram"><b>E-mail: </b><span class="text-black-50">{{event.non_techinical_event}}</span></p>
+
+                    </div>
+                </div>
+
+              </div>
+
+
+
+                
+
+                <footer id="footer" class="pt-5 px-3">
+                    <div id="contact_us">
+                      
+                        <div class="row py-5">
+                         
+                            <div id="reg" class="col-sm-8 py-4 px-4">
+                                <h6 class="text-uppercase font-ram font-size-16">Register Here</h6>
+                                <form id="contact-form" onsubmit="validate()" action="https://formspree.io/xeqredpj" method="POST" class="py-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input id="name" required ="required" name="Name" type="text" class="form-control" placeholder="Name">
+                                        </div>
+                                        <div id="email" class="col">
+                                            <input type="email"  required ="required"  name="Email" class="form-control" placeholder="Email">
+                                        </div>
+                                        <div id="event" style="display: none;" class="col">
+                                            <input type="text" name="Event" class="form-control" value="{{event.title}}" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <textarea id="reg"  required ="required"  name="Reg_no and Department" id="" cols="30" rows="3" class="form-control my-4" placeholder="Register no, Department and Year"></textarea>
+                                    <button type="submit"  class="btn btn-dark">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="footer" class="row bg-light py-5">
+                            <div class="col-sm-4 my-5 text-center">
+                                <h6 class="font-ram font-size-16 text-black-50">Developed By <a style="text-decoration: none;" href="https://dreamcreators.cf">Dream Creators</a></h6>
+                            </div>
+                            <div class="col-sm-4 my-4 text-center">
+                                <div class="footer-title">
+                                    <a href="#" class="navbar-brand font-staat font-size-40 text-dark">UEM</a>
+                                    <p class="description font-os font-size-16 text-black-50 text-uppercase">&copy;2020 UEM. All rights reserved</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 my-5 text-center">
+                                <span class="mr-3"><i class="fab fa-facebook-f"></i></span>
+                                <span class="mr-3"><i class="fab fa-twitter"></i></span>
+                                <span class="mr-3"><i class="fab fa-instagram"></i></span>
+                                <span class="mr-3"><i class="fab fa-youtube"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </main>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+
+<script src="{% static 'events//details_js.js' %}"></script>
+</body>
+</html>
