@@ -1,1 +1,3 @@
-a.	Web: gunicorn EVENT_MANAGEMENT_2.wsgi –log-file -
+
+  
+web gunicorn EVENT_MANAGEMENT_2.wsgi --log-file -
