@@ -84,13 +84,19 @@ $(document).ready(function(){
 
     'use strict';
 
+      
+    
+
 
     var $projects = $('.projects');
+    $projects.imagesLoaded( function() {
 
     $projects.isotope({
         itemSelector: '.item',
         layoutMode: 'fitRows'
     });
+
+});
 
     $('ul.filters > li').on('click', function(e){
 
