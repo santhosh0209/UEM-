@@ -265,9 +265,9 @@ nav ul li a:hover {
 
 .site-title .content h2{
 
-    font-size: 50px;
-    font-family: "titan", cursive;
-    margin-top: 10px;
+    font-size: 55px;
+    font-family: 'Itim', cursive; 
+       margin-top: 10px;
      color: yellow;
     text-shadow: 3px 4px 2px #000;
 }
@@ -337,7 +337,7 @@ nav ul li a:hover {
 }
 
  #head{
-    font-family: "titan",cursive;
+    font-family: 'Itim', cursive; 
     color:yellow;
     text-align: center;
     font-size: 70px;
@@ -352,6 +352,7 @@ nav ul li a:hover {
     text-align: center;
     font-size: 80px;
     letter-spacing: 2px;
+    margin-top: 0rem;
     text-shadow: 5px 5px 5px #000;
   
    
@@ -374,7 +375,9 @@ nav ul li a:hover {
     font-size: 4rem;
 }
 .site-second-tab .site-background h1{
-    font-family:"titan", cursive;
+    font-family: 'Itim', cursive;
+    
+    
     color: #fff;
     margin-top: 1rem;
 
@@ -692,16 +695,16 @@ h4.title{
 }  
 
 .details_bg h1{
-    font-family: "titan", cursive;
-    text-align: center;
+    font-family: 'Itim', cursive;
+        text-align: center;
     color: yellow;
     text-transform: uppercase;
     text-shadow: 5px 5px 5px #000;
     margin-top: 100px;
 }
 .details_bg h3{
-    font-family: "titan", cursive;
-    text-align: center;
+    font-family: 'Itim', cursive;
+        text-align: center;
     color: yellow;
     text-transform: uppercase;
     text-shadow: 5px 5px 5px #000;
@@ -782,6 +785,13 @@ nav ul li:hover {
         margin-top:-6rem;
         font-size: 45px ;
     }
+    #uem{
+        margin-top: -3rem;
+        font-size: 3rem;
+
+    }
+
+  
 }
 
 @media(max-width:322px){
@@ -791,6 +801,10 @@ nav ul li:hover {
         left: 0;
         padding: 2px;
         margin-left: 10px;
+    }
+    #uem{
+        margin-top: -4rem;
+         font-size: 3rem;
     }
 }
 
