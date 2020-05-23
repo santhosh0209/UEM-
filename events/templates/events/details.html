@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'events/details_style.css' %}">
 </head>
+
 <body>
-    
+
     <!-- header area -->
     <header id="header">
         <div class="row m-0">
@@ -25,14 +27,11 @@
                         <a href="{% url 'event-home' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Home</a>
                         <a href="{% url 'event-about' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">About</a>
                         <a href="#reg" class="nav-item nav-link text-white-50 font-os font-size-16 active">Event Registration</a>
-                        <a href="#footer" class="nav-item nav-link text-white-50 font-os font-size-16 active">Contact Us</a>
-                        {% if user.is_authenticated %}
+                        <a href="#footer" class="nav-item nav-link text-white-50 font-os font-size-16 active">Contact Us</a> {% if user.is_authenticated %}
                         <a href="{% url 'admin:index' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Admin</a>
-                        <a href="{% url 'logout' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Logout</a>
-                        {% else %}
+                        <a href="{% url 'logout' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Logout</a> {% else %}
                         <a href="{% url 'login' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Login</a>
-                        <a href="{% url 'register' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Register</a>
-                        {% endif %}
+                        <a href="{% url 'register' %}" class="nav-item nav-link text-white-50 font-os font-size-16 active">Register</a> {% endif %}
                     </div>
                 </nav>
             </div>
@@ -46,7 +45,7 @@
         </div>
     </header>
     <!-- #header area -->
-    
+
     <main id="site-main">
         <div class="row m-0">
             <div class="col-md-9 offset-md-3 px-0">
@@ -66,60 +65,60 @@
                             <p class="font-ram text-black-50 py-2">
                                 {{event.description}}
                             </p>
-                        
+
                         </div>
                     </div>
                 </section>
-              <div class="container ab pl-5 bg-light pt-5">
-                <h1 class="text-uppercase font-ram pb-0 font-size-34">Event Details</h1>
+                <div class="container ab pl-5 bg-light pt-5">
+                    <h1 class="text-uppercase font-ram pb-0 font-size-34">Event Details</h1>
 
-                <div id="details" class=" pl5 py-5 row main_details ">
-                    <div class="d-flex col-md-6 flex-column details">
-                        <p class="font-ram"><b>Event Organizer: </b><span class="text-black-50">{{event.event_organizer_name}}, {{event.event_organizer_contact}}</span></p>
-                        <p class="font-ram"><b>Venue: </b><span class="text-black-50">{{event.venue}}</span></p>
-                        <p class="font-ram"><b>Start Date: </b><span class="text-black-50">{{event.event_date}}</span></p>
-                        <p class="font-ram"><b>Techinical Events: </b><span class="text-black-50">{{event.techinical_event}}</span></p>
-                        <p class="font-ram"><b>Registration Fee: </b><span class="text-black-50">{{event.reg_fee_in_rupees}}</span></p>
+                    <div id="details" class=" pl5 py-5 row main_details ">
+                        <div class="d-flex col-md-6 flex-column details">
+                            <p class="font-ram"><b>Event Organizer: </b><span class="text-black-50">{{event.event_organizer_name}}, {{event.event_organizer_contact}}</span></p>
+                            <p class="font-ram"><b>Venue: </b><span class="text-black-50">{{event.venue}}</span></p>
+                            <p class="font-ram"><b>Start Date: </b><span class="text-black-50">{{event.event_date}}</span></p>
+                            <p class="font-ram"><b>Techinical Events: </b><span class="text-black-50">{{event.techinical_event}}</span></p>
+                            <p class="font-ram"><b>Registration Fee: </b><span class="text-black-50">{{event.reg_fee_in_rupees}}</span></p>
 
 
+                        </div>
+                        <div class="d-flex col-md-6 flex-column details">
+                            <p class="font-ram"><b>Student Coordinator: </b><span class="text-black-50">{{event.student_coordinator_name}}, {{event.student_coordinator_mobile}}</span></p>
+                            <p class="font-ram"><b>Catagory: </b><span class="text-black-50">{{event.event_category}}</span></p>
+                            <p class="font-ram"><b>End Date: </b><span class="text-black-50">{{event.end_date}}</span></p>
+                            <p class="font-ram"><b>Non Techinical Events: </b><span class="text-black-50">{{event.non_techinical_event}}</span></p>
+                            <p class="font-ram"><b>E-mail: </b><span class="text-black-50">{{event.event_booking_email}}</span></p>
+
+                        </div>
                     </div>
-                    <div class="d-flex col-md-6 flex-column details">
-                        <p class="font-ram"><b>Student Coordinator: </b><span class="text-black-50">{{event.student_coordinator_name}}, {{event.student_coordinator_mobile}}</span></p>
-                        <p class="font-ram"><b>Catagory: </b><span class="text-black-50">{{event.event_category}}</span></p>
-                        <p class="font-ram"><b>End Date: </b><span class="text-black-50">{{event.end_date}}</span></p>
-                        <p class="font-ram"><b>Non Techinical Events: </b><span class="text-black-50">{{event.non_techinical_event}}</span></p>
-                        <p class="font-ram"><b>E-mail: </b><span class="text-black-50">{{event.non_techinical_event}}</span></p>
 
-                    </div>
                 </div>
 
-              </div>
 
 
 
-                
 
                 <footer id="footer" class="pt-5 px-3">
                     <div id="contact_us">
-                      
+
                         <div class="row py-5">
-                         
+
                             <div id="reg" class="col-sm-8 py-4 px-4">
                                 <h6 class="text-uppercase font-ram font-size-16">Register Here</h6>
                                 <form id="contact-form" onsubmit="validate()" action="https://formspree.io/xeqredpj" method="POST" class="py-3">
                                     <div class="row">
                                         <div class="col">
-                                            <input id="name" required ="required" name="Name" type="text" class="form-control" placeholder="Name">
+                                            <input id="name" required="required" name="Name" type="text" class="form-control" placeholder="Name">
                                         </div>
                                         <div id="email" class="col">
-                                            <input type="email"  required ="required"  name="Email" class="form-control" placeholder="Email">
+                                            <input type="email" required="required" name="Email" class="form-control" placeholder="Email">
                                         </div>
                                         <div id="event" style="display: none;" class="col">
                                             <input type="text" name="Event" class="form-control" value="{{event.title}}" placeholder="Name">
                                         </div>
                                     </div>
-                                    <textarea id="reg"  required ="required"  name="Reg_no and Department" id="" cols="30" rows="3" class="form-control my-4" placeholder="Register no, Department and Year"></textarea>
-                                    <button type="submit"  class="btn btn-dark">Register</button>
+                                    <textarea id="reg" required="required" name="Reg_no and Department" id="" cols="30" rows="3" class="form-control my-4" placeholder="Register no, Department and Year"></textarea>
+                                    <button type="submit" class="btn btn-dark">Register</button>
                                 </form>
                             </div>
                         </div>
@@ -147,12 +146,13 @@
         </div>
     </main>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
 
-<script src="{% static 'events//details_js.js' %}"></script>
+    <script src="{% static 'events//details_js.js' %}"></script>
 </body>
+
 </html>

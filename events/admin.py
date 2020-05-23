@@ -4,7 +4,7 @@ from .models import Event, Participation
 
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'event_status')
+    list_display = ('title', 'Department', 'event_status')
 
 
 
