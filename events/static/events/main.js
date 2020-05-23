@@ -1,4 +1,16 @@
 
+$(document).ready(function () {
+    'use strict';
+
+
+
+	setTimeout(function () {
+		$('#loader').fadeToggle();
+	}, 3000);
+
+
+
+});
 
 $(document).ready(function(){
     $('.checkbtn').click(function(){
@@ -23,6 +35,7 @@ $(document).ready(function(){
         typeSpeed: 80,
         backSpeed: 50,
         loop: false,
+        startDelay: 3000,
         onComplete: function() {
             $(".typed-cursor").hide();
         }
@@ -55,7 +68,6 @@ $(document).ready(function(){
         });
     });
     
-    document.getElementById("footer").style.bottom = "0";
     
     
     
