@@ -119,7 +119,7 @@ body {
     0%,100%
     {
         color: #fff;
-        filter: blur(0px);
+     
         text-shadow: 0 0 10px #00b3ff,
         0 0 20px #00b3ff,
         0 0 40px #00b3ff,
@@ -132,7 +132,7 @@ body {
     25%,75%
     {
         color: #000;
-        filter: blur(2px);
+     
         text-shadow: none;
       
     }

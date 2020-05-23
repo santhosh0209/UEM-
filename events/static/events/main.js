@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 	setTimeout(function () {
 		$('#loader').fadeToggle();
-	}, 3000);
+	}, 4000);
 
 
 
