@@ -1,4 +1,8 @@
 
+$(window).bind("load", function() {
+    // code here
+
+
 $(document).ready(function () {
     'use strict';
 
@@ -152,3 +156,4 @@ function validate()
   
 
 }
+});
