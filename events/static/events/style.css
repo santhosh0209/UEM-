@@ -83,7 +83,7 @@ body {
 
 .loader:before, .loader:after {
     content: '';
-    border: 1em solid #0082e6;
+    border: 1em solid #1b9bff;
     border-radius: 50%;
     width: inherit;
     height: inherit;
