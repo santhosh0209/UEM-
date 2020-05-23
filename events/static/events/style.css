@@ -61,83 +61,56 @@ body {
 }
 
 
-/*  preloader */
+/*-------------- 2. Preloader css starts ---------------*/
 
-
-.loader{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #000;
-    z-index: 9999999999;
+.loader_bg {
     position: fixed;
+    z-index: 9999999;
+    background: #fff;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
-.loader h2{
-    color: #333;
-    font-size: 6em;
-    display: flex;
-    font-family: var(--font-ram);
+.loader {
+    border: 0 solid transparent;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: calc(50vh - 75px);
+    left: calc(50vw - 75px);
 }
 
-.loader h2 span{
-    animation:animate 4s linear infinite;
+.loader:before, .loader:after {
+    content: '';
+    border: 1em solid #0082e6;
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: loader 2s linear infinite;
+    opacity: 0;
+}
+
+.loader:before {
+    animation-delay: .5s;
+}
+
+@keyframes loader {
+    0% {
+        transform: scale(0);
+        opacity: 0; }
+    50% {
+        opacity: 1; }
+    100% {
+        transform: scale(1);
+        opacity: 0; }
 }
 
 
-
-.loader h2 span:nth-child(1){
-    animation-delay: 0s;
-}
-.loader h2 span:nth-child(2){
-    animation-delay: 0.1s;
-}
-.loader h2 span:nth-child(3){
-    animation-delay: 0.2s;
-}
-.loader h2 span:nth-child(4){
-    animation-delay: 0.3s;
-}
-.loader h2 span:nth-child(5){
-    animation-delay: 0.4s;
-}
-.loader h2 span:nth-child(6){
-    animation-delay: 0.5s;
-}
-.loader h2 span:nth-child(7){
-    animation-delay: 0.6s;
-}
-.loader h2 span:nth-child(8){
-    animation-delay: 0.7s;
-}
-
- 
-@keyframes animate{
-    0%,100%
-    {
-        color: #fff;
-     
-        text-shadow: 0 0 10px #00b3ff,
-        0 0 20px #00b3ff,
-        0 0 40px #00b3ff,
-        0 0 80px #00b3ff,
-        0 0 120px #00b3ff,
-        0 0 200px #00b3ff,
-        0 0 300px #00b3ff,
-        0 0 400px #00b3ff;
-    }
-    25%,75%
-    {
-        color: #000;
-     
-        text-shadow: none;
-      
-    }
-}
-
+/*-------------- Preloader css ends ---------------*/
 
 
 

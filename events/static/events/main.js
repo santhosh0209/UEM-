@@ -7,10 +7,9 @@ $(document).ready(function () {
     'use strict';
 
 
-
-	setTimeout(function () {
-		$('#loader').fadeToggle();
-	}, 4000);
+    setTimeout(function () {
+		$('.loader_bg').fadeToggle();
+	}, 2000);
 
 
 
