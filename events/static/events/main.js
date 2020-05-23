@@ -90,14 +90,14 @@ $(document).ready(function(){
 
     var $projects = $('.projects');
     // this below line is for not collapsing the galary
- 
+    $projects.imagesLoaded( function() {   
 
     $projects.isotope({
         itemSelector: '.item',
         layoutMode: 'fitRows'
     });
 
-
+});
 
     $('ul.filters > li').on('click', function(e){
 
